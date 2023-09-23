@@ -6,15 +6,15 @@ resource "aws_iam_role" "hello_lambda_exec" {
   name = "hello-lambda"
 
   assume_role_policy = jsonencode(
-  {"Version": "2012-10-17", "Statement": [
-    {
-    "Effect": "Allow",
-    "Principal": {
-    "Service": "lambda.amazonaws.com"
-    },
-    "Action": "sts:AssumeRole"
-    }
-    ]
+    { "Version" : "2012-10-17", "Statement" : [
+      {
+        "Effect" : "Allow",
+        "Principal" : {
+          "Service" : "lambda.amazonaws.com"
+        },
+        "Action" : "sts:AssumeRole"
+      }
+      ]
   })
 }
 
@@ -47,7 +47,7 @@ resource "aws_cloudwatch_log_group" "hello" {
 data "archive_file" "lambda_hello" {
   type = "zip"
 
-  source_dir = "../${path.module}/hello"
+  source_dir  = "../${path.module}/hello"
   output_path = "../${path.module}/hello.zip"
 }
 

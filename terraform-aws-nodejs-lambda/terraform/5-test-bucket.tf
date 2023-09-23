@@ -23,10 +23,10 @@ resource "aws_s3_bucket_public_access_block" "test" {
 resource "aws_s3_object" "test" {
   bucket = aws_s3_bucket.test.id
 
-  key = "hello.json"
+  key     = "hello.json"
   content = jsonencode({ name = "S3" })
 }
 
 output "test_s3_bucket" {
-  value = random_pet.lambda_bucket_name.id
+  value = random_pet.test_bucket_name.id
 }

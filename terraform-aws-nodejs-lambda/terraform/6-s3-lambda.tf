@@ -2,15 +2,15 @@ resource "aws_iam_role" "s3_lambda_exec" {
   name = "s3-lambda"
 
   assume_role_policy = jsonencode(
-  {"Version": "2012-10-17", "Statement": [
-    {
-    "Effect": "Allow",
-    "Principal": {
-    "Service": "lambda.amazonaws.com"
-    },
-    "Action": "sts:AssumeRole"
-    }
-    ]
+    { "Version" : "2012-10-17", "Statement" : [
+      {
+        "Effect" : "Allow",
+        "Principal" : {
+          "Service" : "lambda.amazonaws.com"
+        },
+        "Action" : "sts:AssumeRole"
+      }
+      ]
   })
 }
 
@@ -25,13 +25,13 @@ resource "aws_iam_policy" "test_s3_bucket_access" {
   policy = jsonencode({
     Version = "2012-10-17"
     Statement = [
-        {
-            Action = [
-                "s3:GetObject",
-            ]
-            Effect = "Allow"
-            Resource = "arn:aws:s3:::${aws_s3_bucket.test.id}/*"
-        },
+      {
+        Action = [
+          "s3:GetObject",
+        ]
+        Effect   = "Allow"
+        Resource = "arn:aws:s3:::${aws_s3_bucket.test.id}/*"
+      },
     ]
   })
 }
@@ -64,7 +64,7 @@ resource "aws_cloudwatch_log_group" "s3" {
 data "archive_file" "lambda_s3" {
   type = "zip"
 
-  source_dir = "../${path.module}/s3"
+  source_dir  = "../${path.module}/s3"
   output_path = "../${path.module}/s3.zip"
 }
 

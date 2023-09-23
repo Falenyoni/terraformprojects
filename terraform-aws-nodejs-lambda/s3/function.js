@@ -15,8 +15,8 @@ exports.handler = async(event, context) => {
     };
     try {
         const { Body } =   await s3.getObject(params).promise();
-        const content  = Body.toDtring('utf-8');
-        return content;
+        const content  = Body.toString('utf-8');
+        return content + 'works!!!';
         
     } catch (err) {
         console.log(err);
