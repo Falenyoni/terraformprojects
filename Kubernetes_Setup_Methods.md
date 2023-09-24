@@ -2,18 +2,20 @@
 
 1. Minikube
 2. Kind
+3. microK8s
 
 # Production Setup
 
 1. kubeadm
 2. kops (AWS)
-3. Kubespray
+3. Kubespray 
 
 # Kubernetes As a Service
 
 1. AKS - Azure Kubernetes Services
 2. EKS - Elastic Kubernets Service
 3. GKE - Google Kubernetes Engine
+4. microK8s - Free
 
 ### Steps in Setting up EKS using AWS Console
 
