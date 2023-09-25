@@ -47,6 +47,67 @@ _ Go to https://jhooq.com/getting-start-with-helm-chart/
 ## Helm CLI(Commands)
 
 * Basic Helm CLI Commands
-    * helm install myhelloworld helloworld
-    * helm delete myhelloworld
-    * helm list -a
+    * > helm install myhelloworld helloworld
+    * > helm delete myhelloworld
+    * > helm list -a
+
+
+## Creating a Helm Chart
+    * helm create  hellowworld
+    * ls -lart
+    * cd ./helloworld
+    * ls
+    * cd templates
+    * lstrelo
+
+**NB Remember to do a port foward for your pod if it does not work in 
+ > kubectl port-foward <pod_name>  <machine_port>:<pod_port/container_port>
+
+ To view Dashboard
+ > microk8s dashboard-proxy
+
+ To uninstall Helm chart
+ > helm uninstall <chart_name>
+
+## HELM CHART COMMAND EXPLANATION
+
+* Create Helm chart
+  > helm create <chart_name>
+  * used for creating the chart
+
+* Install Helm Chart
+  > helm install <release_name> <chart_name>
+  *
+
+* Upgrade the helm chart
+  > helm upgrade <release_name> <chart_name>
+
+* Rollback the helm chart
+  > helm rollback <release_name> <Revision_Number>
+  * When rolling back provide the revision number you are rolling back to
+
+  # 5. Helm --debug -dry-run
+  * Used to validate your helm chart before install
+  >helm install myhelloworld --debug --dry-run helloworld
+
+  <p align="center">
+  <img src="Helm_Debug_Dry_Run.png" width="350" title="Helm Validation">
+</p>
+
+
+  # 6. Helm template
+    * used to validate the yml without connecting to thek8s api server
+
+      <p align="center">
+  <img src="helm_templates.png" width="350" title="Helm Validation">
+</p>
+
+# 7. Helm Lint
+* Find any errors or misconfiguration
+  > helm lint <chart_name>
+
+
+# 8. Helm Lint
+* Remove the chart
+  > helm uninstall <release_name>
+
