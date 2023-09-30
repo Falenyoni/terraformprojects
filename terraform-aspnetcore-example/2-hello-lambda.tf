@@ -36,6 +36,12 @@ resource "aws_lambda_function" "LambdaAPIDemo" {
   source_code_hash = data.archive_file.lambda_aspnetcore.output_base64sha256
 
   role = aws_iam_role.aspnetcore_lambda_exec.arn
+
+  environment {
+    variables = {
+      ASPNETCORE_ENVIRONMENT = "Development"
+    }    
+  }
 }
 
 resource "aws_cloudwatch_log_group" "LambdaAPIDemo" {
@@ -58,4 +64,9 @@ resource "aws_s3_object" "lambda_aspnetcore" {
   source = data.archive_file.lambda_aspnetcore.output_path
 
   etag = filemd5(data.archive_file.lambda_aspnetcore.output_path)
+}
+
+resource "aws_lambda_function_url" "test_latest" {
+  function_name      = aws_lambda_function.LambdaAPIDemo.function_name
+  authorization_type = "NONE"
 }
