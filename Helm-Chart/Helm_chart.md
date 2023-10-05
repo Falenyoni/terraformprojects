@@ -111,3 +111,10 @@ _ Go to https://jhooq.com/getting-start-with-helm-chart/
 * Remove the chart
   > helm uninstall <release_name>
 
+
+  ## CHECKING HELM SERVICE URL IN MACBOOK M1
+  * You can get the below commands after running >> helm install <release_name> <helm_chart>
+  > export NODE_PORT=$(kubectl get --namespace default -o jsonpath="{.spec.ports[0].nodePort}" services myhelloworld)
+  > export NODE_IP=$(kubectl get nodes --namespace default -o jsonpath="{.items[0].status.addresses[0].address}")
+  > echo http://$NODE_IP:$NODE_PORT
+

@@ -1,0 +1,31 @@
+# install Nginx using Ansible
+- name: Setup nginx server on myserver list (host group)
+- hosts: servers
+  become: True
+  tasks:
+    - name: Install the latest version of nginx
+      command: amazon-linux-extras install nginx1.12=latest -y
+      args:
+        create: /sbin/nginx 
+    
+    - name: Start nginx service
+      service: 
+        name: nginx
+        state: started
+
+    - name: Enable nginx service
+      service: 
+        name: nginx
+        enabled: yes
+    
+    - name: Get nginx installed version
+      command: nginx -v
+    
+    - name: Get status of nginx service
+      command: systemctl status nginx 
+
+    - name: ansible copy file to remote host
+      copy:
+        src: /home/ec2-user/sample.txt
+        dest: /home/ec2-user
+
