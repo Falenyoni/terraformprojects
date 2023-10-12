@@ -71,13 +71,14 @@ _ Go to https://jhooq.com/getting-start-with-helm-chart/
 
 ## HELM CHART COMMAND EXPLANATION
 
-* Create Helm chart
+# Create Helm chart
   > helm create <chart_name>
   * used for creating the chart
 
 * Install Helm Chart
-  > helm install <release_name> <chart_name>
-  *
+  > helm install <chart_release_name> <chart_name>
+  * specify chart release name
+  * Check list of 
 
 * Upgrade the helm chart
   > helm upgrade <release_name> <chart_name>
